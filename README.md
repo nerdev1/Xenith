@@ -68,7 +68,7 @@ pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-glfw mingw-w64-x86_64-toolchain 
 1. **Clone the repository**
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/nerdev1/Xenith.git
 cd Xenith
 ```
 
