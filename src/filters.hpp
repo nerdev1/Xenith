@@ -332,7 +332,7 @@ inline void decorated_two(Image &image, Image &frame_image, int frame_size)
         }
     }
 }
-inline void decorated_inner(Image &image, int frame_size)
+inline void decorated_three(Image &image, int frame_size)
 {
     int s = frame_size / 2;
 
@@ -575,13 +575,13 @@ inline void frame(Image &image, int option, int frame_size, int r, int g, int b)
     }
     else if (option == 2)
     {
-        decorated_inner(frame_image, frame_size);
+        decorated_three(frame_image, frame_size);
         decorated_two(image, frame_image, frame_size);
     }
     else if (option == 3)
     {
         decorated_two(image, frame_image, frame_size);
-        decorated_inner(frame_image, frame_size);
+        decorated_three(frame_image, frame_size);
     }
     image = frame_image;
 }

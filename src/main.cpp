@@ -8,13 +8,11 @@
  Members          :
  - Amar Ayman Ahmed            (ID: 20240355)    -> (#1 Gray Scale, #4 Merge , #7 Darken And Lighten, #9 Frame, #15 Infrared)
  - Nour Eldin Adel Abdelhamid  (ID: 20240639)    -> (#2 Black And White, #5 Flip, #8 Crop, #11 Resize, #13 Wano Sunlight)
- - Youssef Saleh Abdelaziz     (ID: 20240694)    -> (#3 Invert, #6 Rotate, #10 Edge Detection, #12 Blur, #14 Old TV)  (Did the menu)
+ - Youssef Saleh Abdelaziz     (ID: 20240694)    -> (#3 Invert, #6 Rotate, #10 Edge Detection, #12 Blur, #14 Old TV)     (Did the gui)
 
- Github repo link : https://github.com/nerdev1/OOP-Assignment-1.git
+ Github repo link : https://github.com/nerdev1/Xenith.git
 
- Shared doc link  : https://docs.google.com/document/d/1YHjz3mVhxFl6CWGilCxqFjRZy0W5brpxXNafBPqFU88/edit?usp=sharing
-
- Video link       : https://drive.google.com/file/d/1bSPJvaqwLU3fjhQEBbT-FGl7tdeyRHP0/view?usp=drive_link
+ Video link       :
 
  Drive link       : https://drive.google.com/drive/folders/1vvsa0MINioFCfhdAm5TP6xARDonsS4hQ?usp=drive_link
 ------------------------------------------------------------------------------------------
@@ -123,17 +121,18 @@ signed main()
     if (!glfwInit())
         return 1;
 
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); // Request OpenGL 3.3
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // Required for macOS
+#endif
+
     // Starting glfw window and maximizing it
     glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
     GLFWwindow *window = glfwCreateWindow(1280, 700, "Xenith", NULL, NULL);
     glfwMaximizeWindow(window);
     glfwMakeContextCurrent(window);
-    // glfwSwapInterval(1);
-
-    // Adding icon to the window
-    Image icon_image("misc/icon/icon.png");
-    GLFWimage icon = {icon_image.width, icon_image.height, icon_image.imageData};
-    glfwSetWindowIcon(window, 1, &icon);
 
     // Setup ImGui context
     IMGUI_CHECKVERSION();
@@ -177,7 +176,7 @@ signed main()
     // Filters options variables
     const char *merge_combo[] = {"Pick a merge option", "Merge common area", "Resize bigger image to smaller dimensions", "Resize smaller image to bigger dimensions"};
     const char *neon_combo[] = {"Original Image", "Standard", "Xenon", "Galaxy"};
-    const char *glowing_combo[] = {"Original Image", "1", "2"};
+    const char *glowing_combo[] = {"Original Image", "Xenon Edges", "Galaxy Edges"};
     int merge_combo_current;
     int neon_combo_current;
     int glowing_combo_current;
