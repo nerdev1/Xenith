@@ -1,23 +1,3 @@
-/*
-------------------------------------------------------------------------------------------
- File Name        : CS213_A1_Part2_S33_20240355_20240639_20240694.cpp
- Description      : Image filters assignment part 2.
-                    15 filters -> (#1 gray scale, #2 black and white, #3 invert, #4 flip, #5 rotate, #6 darken and lighten, #8 Crop, #9 Frame, #10 Edge Detection, #11 Resize, #12 Blur, #13 Wano Sunlight, #14 Old TV, #15 Infrared).
- Section          : S33
-
- Members          :
- - Amar Ayman Ahmed            (ID: 20240355)    -> (#1 Gray Scale, #4 Merge , #7 Darken And Lighten, #9 Frame, #15 Infrared)
- - Nour Eldin Adel Abdelhamid  (ID: 20240639)    -> (#2 Black And White, #5 Flip, #8 Crop, #11 Resize, #13 Wano Sunlight)
- - Youssef Saleh Abdelaziz     (ID: 20240694)    -> (#3 Invert, #6 Rotate, #10 Edge Detection, #12 Blur, #14 Old TV)     (Did the gui)
-
- Github repo link : https://github.com/nerdev1/Xenith.git
-
- Video link       :
-
- Drive link       : https://drive.google.com/drive/folders/1vvsa0MINioFCfhdAm5TP6xARDonsS4hQ?usp=drive_link
-------------------------------------------------------------------------------------------
-*/
-
 #include <iostream>
 #include <vector>
 #include <map>
