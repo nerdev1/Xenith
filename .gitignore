@@ -1,0 +1,5 @@
+# Excutable and build files
+build/
+
+# Visual studio code
+.vscode/
