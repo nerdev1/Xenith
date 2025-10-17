@@ -82,27 +82,35 @@ Xenith/
 │   └── fonts/
 │       └── Nunito-Bold.hpp
 ├── libs/
-│   └── imgui/
-│       ├── imgui.cpp
-│       ├── imgui_draw.cpp
-│       ├── imgui_tables.cpp
-│       ├── imgui_widgets.cpp
-│       ├── imgui.h
-│       ├── imgui_internal.h
-│       ├── imstb_truetype.h
-│       ├── imstb_textedit.h
-│       ├── imstb_rectpack.h
-│       ├── imconfig.h
-│       └── backends/
-│           ├── imgui_impl_glfw.cpp
-│           ├── imgui_impl_glfw.h
-│           ├── imgui_impl_opengl3.cpp
-│           ├── imgui_impl_opengl3_loader.h
-│           └── imgui_impl_opengl3.h
-├── stb/
-│   ├── Image_Class.h
-│   ├── stb_image.h
-│   └── stb_image_write.h
+│   ├── imgui/
+│   │   ├── imgui.cpp
+│   │   ├── imgui_draw.cpp
+│   │   ├── imgui_tables.cpp
+│   │   ├── imgui_widgets.cpp
+│   │   ├── imgui.h
+│   │   ├── imgui_internal.h
+│   │   ├── imstb_truetype.h
+│   │   ├── imstb_textedit.h
+│   │   ├── imstb_rectpack.h
+│   │   ├── imconfig.h
+│   │   └── backends/
+│   │       ├── imgui_impl_glfw.cpp
+│   │       ├── imgui_impl_glfw.h
+│   │       ├── imgui_impl_opengl3.cpp
+│   │       ├── imgui_impl_opengl3_loader.h
+│   │       └── imgui_impl_opengl3.h
+│   ├── stb/
+│   │   ├── Image_Class.h
+│   │   ├── stb_image.h
+│   │   └── stb_image_write.h
+│   └── portable_file_dialogs/
+│       └── portable-file-dialogs.h
+│
+├── misc
+│   ├── fonts
+│   │   └── Nunito-Bold.ttf
+│   └── icon
+│       └── icon.png
 ├── Makefile
 ├── .gitignore
 └── README.md
