@@ -97,7 +97,7 @@ inline void merge(Image &image1, Image &image2, int choice, float merge_ratio)
 {
     if (merge_ratio == 0)
         return;
-    
+
     merge_ratio /= 100;
 
     if (image1.width == image2.width && image1.height == image2.height)
@@ -815,7 +815,7 @@ inline void skew(Image &image, int angle)
     if (angle == 0)
         return;
 
-    double rad = angle * M_PI / 180;
+    double rad = angle * 3.1415 / 180;
 
     Image skewed_image(image.width + round((image.height * tan((rad >= 0) ? rad : -rad))), image.height);
 

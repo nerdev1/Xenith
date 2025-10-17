@@ -53,7 +53,7 @@ ifeq ($(PLATFORM), Windows)
     # Windows doesn't reliably support -march=native
     CXXFLAGS := $(filter-out -march=native,$(CXXFLAGS))
     CXXFLAGS += -O2
-    LIBS = -lopengl32 -lglfw3 -lgdi32
+    LIBS = -lopengl32 -lglfw3 -lgdi32 -lole32 -luuid -lshell32
     # Static linking for Windows to avoid DLL dependencies
     LDFLAGS = -static -static-libgcc -static-libstdc++
 endif
