@@ -1,47 +1,52 @@
-# 🌌 Xenith — Cross-Platform Application
+# 🌌 Xenith
 
-Xenith is a modern cross platform mini-photoshop application built with **OpenGL**, **GLFW**, and **Dear ImGui**, designed to run on **Linux**, **Windows**, and **macOS**.
+A modern cross-platform mini-photoshop application built with **OpenGL**, **GLFW**, and **Dear ImGui**, designed to run seamlessly on **Linux**, **Windows**, and **macOS**.
 
 ---
 
 ## Table of Contents
-- [Features](#-features)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Building](#-building)
-- [Running](#-running)
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Building](#building)
+- [Running](#running)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Links](#links)
+
 ---
 
 ## Features
 
--  **Cross-platform** (Linux, Windows, macOS)
--  **Modern OpenGL** rendering
--  **Dear ImGui** for elegant user interfaces
--  **GLFW** for window and input management
--  **26+ Image filters** with C++23
--  Undo, Redo, Clear and Align options
--  **Keyboard shortcuts** for ease of use
--  **Simple Make build system**
--  **Clean and modular architecture**
+- 🖥️ **Cross-platform** — Full support for Linux, Windows, and macOS
+- 🎨 **26+ Image Filters** — Extensive filter library powered by modern C++23
+- ⚡ **Modern OpenGL** — Hardware-accelerated rendering
+- 🎯 **Dear ImGui** — Clean, intuitive user interface
+- 🪟 **GLFW** — Robust window and input management
+- ↩️ **Undo/Redo** — Full edit history support
+- 🧹 **Clear and Align** — Quick image manipulation tools
+- ⌨️ **Keyboard Shortcuts** — Efficient workflow controls
+- 🔧 **Simple Build System** — Straightforward Make-based compilation
+- 📦 **Modular Architecture** — Clean, maintainable codebase
 
 ---
 
-##  Prerequisites
+## Prerequisites
 
-###  Linux (Ubuntu/Debian)
+### Linux (Ubuntu/Debian)
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y build-essential git
-sudo apt-get install -y libglfw3-dev libgl1-mesa-dev pkg-config
+sudo apt-get install -y build-essential git pkg-config
+sudo apt-get install -y libglfw3-dev libgl1-mesa-dev
 ```
 
----
-
-###  macOS
+### macOS
 
 ```bash
-# Install Homebrew if not already installed
+# Install Homebrew (if not already installed)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install dependencies
@@ -49,16 +54,14 @@ brew update
 brew install glfw pkg-config
 ```
 
----
+### Windows (MSYS2)
 
-### Windows (via MSYS2)
-
-1. Download and install **MSYS2** from [https://www.msys2.org/](https://www.msys2.org/)
-2. Open the **MSYS2 terminal**
+1. Download and install **MSYS2** from [msys2.org](https://www.msys2.org/)
+2. Open the **MSYS2 MINGW64** terminal
 3. Install dependencies:
 
 ```bash
-pacman -Syu       # update package database
+pacman -Syu  # Update package database
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-glfw mingw-w64-x86_64-toolchain make git
 ```
 
@@ -73,38 +76,90 @@ git clone https://github.com/nerdev1/Xenith.git
 cd Xenith
 ```
 
-2. **Verify project structure**
+2. **Install platform dependencies** (optional automated step)
+
+```bash
+make install-deps
+```
+
+---
+
+## Building
+
+### Build Commands
+
+```bash
+make          # Standard build (auto-detects platform)
+make release  # Optimized build with -O3, LTO, no debug symbols
+make debug    # Debug build with -g, no optimizations
+make clean    # Remove all build artifacts
+```
+
+### Platform-Specific Build Details
+
+#### Linux
+- Uses system OpenGL libraries and GLFW
+- Link Time Optimization (LTO) enabled for better performance
+- Native architecture optimizations
+
+#### macOS
+- Links against OpenGL frameworks (Cocoa, IOKit, CoreVideo)
+- Uses Homebrew-provided GLFW
+- Optimized for native Apple Silicon and Intel architectures
+
+#### Windows
+- Compiles with **MinGW-w64** toolchain
+- Static linking (no external DLL dependencies)
+- Uses Windows OpenGL (`opengl32`)
+
+---
+
+## Running
+
+After successful compilation:
+
+**Linux/macOS:**
+```bash
+./Xenith
+```
+
+**Windows:**
+```bash
+.\Xenith.exe
+```
+
+---
+
+## Project Structure
 
 ```
 Xenith/
 ├── src/
-│   ├── main.cpp
-│   ├── filters.hpp
+│   ├── main.cpp                    # Application entry point
+│   ├── filters.hpp                 # Image filter implementations
 │   └── fonts/
-│       └── Nunito-Bold.hpp
+│       └── Nunito-Bold.hpp         # Embedded font data
+│
 ├── libs/
-│   ├── imgui/
+│   ├── imgui/                      # Dear ImGui library
 │   │   ├── imgui.cpp
 │   │   ├── imgui_draw.cpp
 │   │   ├── imgui_tables.cpp
 │   │   ├── imgui_widgets.cpp
 │   │   ├── imgui.h
 │   │   ├── imgui_internal.h
-│   │   ├── imstb_truetype.h
-│   │   ├── imstb_textedit.h
-│   │   ├── imstb_rectpack.h
+│   │   ├── imstb_*.h               # STB headers
 │   │   ├── imconfig.h
-│   │   └── backends/
-│   │       ├── imgui_impl_glfw.cpp
-│   │       ├── imgui_impl_glfw.h
-│   │       ├── imgui_impl_opengl3.cpp
-│   │       ├── imgui_impl_opengl3_loader.h
-│   │       └── imgui_impl_opengl3.h
-│   ├── stb/
+│   │   └── backends/               # Platform backends
+│   │       ├── imgui_impl_glfw.*
+│   │       └── imgui_impl_opengl3.*
+│   │
+│   ├── stb/                        # STB image library
 │   │   ├── Image_Class.h
 │   │   ├── stb_image.h
 │   │   └── stb_image_write.h
-│   └── portable_file_dialogs/
+│   │
+│   └── portable_file_dialogs/      # File dialog library
 │       └── portable-file-dialogs.h
 │
 ├── misc/
@@ -112,61 +167,27 @@ Xenith/
 │   │   └── Nunito-Bold.ttf
 │   └── icon/
 │       └── icon.png
-├── Makefile
+│
+├── Makefile                        # Build configuration
 ├── .gitignore
 └── README.md
 ```
 
 ---
 
-## Building
+## Contributing
 
-### Automated dependency installation
-```bash
-make install-deps
-```
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### Build commands
-```bash
-make          # Standard build (auto-detects platform)
-make release  # Optimized build (-O3, LTO, no debug)
-make debug    # Debug build (-g, no optimizations)
-make clean    # Remove build artifacts
-```
----
+## License
 
-### Platform notes
+This project is open source. Please check the repository for license details.
 
-#### Linux
-- Uses system OpenGL and GLFW 
-- Link Time Optimization (LTO) enabled 
-- Native architecture optimizations 
+## Links
 
-#### macOS
-- Uses OpenGL frameworks (Cocoa, IOKit, CoreVideo)
-- Homebrew-provided GLFW
-- Native architecture optimizations
-
-#### Windows
-- Compiles with **MinGW-w64**
-- Static linking (no external DLLs)
-- Uses Windows OpenGL (`opengl32`)
+- **Repository:** [github.com/nerdev1/Xenith](https://github.com/nerdev1/Xenith)
+- **Issues:** Report bugs or request features on GitHub
 
 ---
 
-## Running
-
-After a successful build:
-
-**Linux/macOS**
-```bash
-./Xenith
-```
-
-**Windows**
-```bash
-.\Xenith.exe
-```
-
----
-
+**Made with ❤️ using C++23, OpenGL, and Dear ImGui**
