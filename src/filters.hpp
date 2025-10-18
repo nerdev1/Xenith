@@ -259,7 +259,7 @@ inline void crop_darken_and_lighten(Image &image, int x, int y, int width, int h
             {
                 if (!(i >= x and i < width + x and j >= y and j < height + y))
                 {
-                    image(i, j, k) /= 4;
+                    image(i, j, k) /= 6;
                 }
             }
         }
