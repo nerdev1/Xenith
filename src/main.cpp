@@ -1224,7 +1224,7 @@ signed main()
                 }
             }
         }
-        else if (image_loaded and Alt() and Shift())
+        else if (image_loaded and Alt() and Ctrl())
         {
             FullWindowImageDisplay(image, image_texture, menu_bar_height);
         }

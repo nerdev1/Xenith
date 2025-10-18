@@ -1172,7 +1172,7 @@ inline void noise(Image &image, float noise_factor)
     if (noise_factor == 0)
         return;
 
-    noise_factor /= 33.33;
+    noise_factor /= 7.7;
 
     uint32_t state = 123456789; // seed once
 
@@ -1180,7 +1180,7 @@ inline void noise(Image &image, float noise_factor)
     {
         for (int j = 0; j < image.height; j++)
         {
-            int random_value = fastRand255(state) / (3.001f - noise_factor);
+            int random_value = fastRand255(state) / (13.001f - noise_factor);
 
             for (int k = 0; k <= 2; k++)
             {
