@@ -20,6 +20,7 @@ Xenith is a modern cross platform mini-photoshop application built with **OpenGL
 -  **GLFW** for window and input management
 -  **26+ Image filters** with C++23
 -  Undo, Redo, Clear and Align options
+-  **Keyboard shortcuts** for ease of use
 -  **Simple Make build system**
 -  **Clean and modular architecture**
 
