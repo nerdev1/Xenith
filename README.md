@@ -106,10 +106,10 @@ Xenith/
 │   └── portable_file_dialogs/
 │       └── portable-file-dialogs.h
 │
-├── misc
-│   ├── fonts
+├── misc/
+│   ├── fonts/
 │   │   └── Nunito-Bold.ttf
-│   └── icon
+│   └── icon/
 │       └── icon.png
 ├── Makefile
 ├── .gitignore
