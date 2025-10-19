@@ -6,37 +6,35 @@ A modern cross-platform mini-photoshop application built with **OpenGL**, **GLFW
 
 ## Table of Contents
 
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Building](#building)
-- [Running](#running)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Links](#links)
+- Features
+- Prerequisites
+- Installation
+- Building
+- Running
+- Contributing
+- License
+- Links
 
 ---
 
 ## Features
 
-- 🖥️ **Cross-platform** — Full support for Linux, Windows, and macOS
-- 🎨 **26+ Image Filters** — Extensive filter library powered by modern C++23
-- ⚡ **Modern OpenGL** — Hardware-accelerated rendering
-- 🎯 **Dear ImGui** — Clean, intuitive user interface
-- 🪟 **GLFW** — Robust window and input management
-- ↩️ **Undo/Redo** — Full edit history support
-- 🧹 **Clear and Align** — Quick image manipulation tools
-- ⌨️ **Keyboard Shortcuts** — Efficient workflow controls
-- 🔧 **Simple Build System** — Straightforward Make-based compilation
+- 🖥️ **Cross-platform** — Full support for Linux, Windows, and macOS  
+- 🎨 **26+ Image Filters** — Extensive filter library powered by modern C++23  
+- ⚡ **Modern OpenGL** — Hardware-accelerated rendering  
+- 🎯 **Dear ImGui** — Clean, intuitive user interface  
+- 🪟 **GLFW** — Robust window and input management  
+- ↩️ **Undo/Redo** — Full edit history support  
+- 🧹 **Clear and Align** — Quick image manipulation tools  
+- ⌨️ **Keyboard Shortcuts** — Efficient workflow controls  
+- 🔧 **Simple Build System** — Straightforward Make-based compilation  
 - 📦 **Modular Architecture** — Clean, maintainable codebase
 
 ---
 
 ## Prerequisites
 
-### Linux (Ubuntu/Debian)
-
+### Linux (Debian/Ubuntu)
 ```bash
 sudo apt-get update
 sudo apt-get install -y build-essential git pkg-config
@@ -44,22 +42,17 @@ sudo apt-get install -y libglfw3-dev libgl1-mesa-dev
 ```
 
 ### macOS
-
-```bash
 # Install Homebrew (if not already installed)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install dependencies
 brew update
 brew install glfw pkg-config
-```
 
 ### Windows (MSYS2)
-
-1. Download and install **MSYS2** from [msys2.org](https://www.msys2.org/)
-2. Open the **MSYS2 MINGW64** terminal
+1. Download and install **MSYS2** from https://www.msys2.org/  
+2. Open the **MSYS2 MINGW64** terminal  
 3. Install dependencies:
-
 ```bash
 pacman -Syu  # Update package database
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-glfw mingw-w64-x86_64-toolchain make git
@@ -69,15 +62,55 @@ pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-glfw mingw-w64-x86_64-toolchain 
 
 ## Installation
 
-1. **Clone the repository**
-
+1. Clone the repository:
 ```bash
 git clone https://github.com/nerdev1/Xenith.git
 cd Xenith
 ```
 
-2. **Install platform dependencies** (optional automated step)
+2. Verify project structure
+```
+Xenith/
+├── src/
+│   ├── main.cpp                    # Application entry point
+│   ├── filters.hpp                 # Image filter implementations
+│   └── fonts/
+│       └── Nunito-Bold.hpp         # Embedded font data
+│
+├── libs/
+│   ├── imgui/                      # Dear ImGui library
+│   │   ├── imgui.cpp
+│   │   ├── imgui_draw.cpp
+│   │   ├── imgui_tables.cpp
+│   │   ├── imgui_widgets.cpp
+│   │   ├── imgui.h
+│   │   ├── imgui_internal.h
+│   │   ├── imstb_*.h               # STB headers
+│   │   ├── imconfig.h
+│   │   └── backends/               # Platform backends
+│   │       ├── imgui_impl_glfw.*
+│   │       └── imgui_impl_opengl3.*
+│   │
+│   ├── stb/                        # STB image library
+│   │   ├── Image_Class.h
+│   │   ├── stb_image.h
+│   │   └── stb_image_write.h
+│   │   
+│   └── portable_file_dialogs/      # File dialog library
+│       └── portable-file-dialogs.h
+│
+├── misc/
+│   ├── fonts/
+│   │   └── Nunito-Bold.ttf
+│   └── icon/
+│       └── icon.png
+│
+├── Makefile                        # Build configuration
+├── .gitignore
+└── README.md
+```
 
+3. (Optional) Install platform dependencies:
 ```bash
 make install-deps
 ```
@@ -87,7 +120,6 @@ make install-deps
 ## Building
 
 ### Build Commands
-
 ```bash
 make          # Standard build (auto-detects platform)
 make release  # Optimized build with -O3, LTO, no debug symbols
@@ -125,52 +157,8 @@ After successful compilation:
 
 **Windows:**
 ```bash
-.\Xenith.exe
-```
-
----
-
-## Project Structure
-
-```
-Xenith/
-├── src/
-│   ├── main.cpp                    # Application entry point
-│   ├── filters.hpp                 # Image filter implementations
-│   └── fonts/
-│       └── Nunito-Bold.hpp         # Embedded font data
-│
-├── libs/
-│   ├── imgui/                      # Dear ImGui library
-│   │   ├── imgui.cpp
-│   │   ├── imgui_draw.cpp
-│   │   ├── imgui_tables.cpp
-│   │   ├── imgui_widgets.cpp
-│   │   ├── imgui.h
-│   │   ├── imgui_internal.h
-│   │   ├── imstb_*.h               # STB headers
-│   │   ├── imconfig.h
-│   │   └── backends/               # Platform backends
-│   │       ├── imgui_impl_glfw.*
-│   │       └── imgui_impl_opengl3.*
-│   │
-│   ├── stb/                        # STB image library
-│   │   ├── Image_Class.h
-│   │   ├── stb_image.h
-│   │   └── stb_image_write.h
-│   │
-│   └── portable_file_dialogs/      # File dialog library
-│       └── portable-file-dialogs.h
-│
-├── misc/
-│   ├── fonts/
-│   │   └── Nunito-Bold.ttf
-│   └── icon/
-│       └── icon.png
-│
-├── Makefile                        # Build configuration
-├── .gitignore
-└── README.md
+.
+/Xenith.exe
 ```
 
 ---
@@ -179,13 +167,15 @@ Xenith/
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+---
+
 ## License
 
 This project is open source. Please check the repository for license details.
 
 ## Links
 
-- **Repository:** [github.com/nerdev1/Xenith](https://github.com/nerdev1/Xenith)
+- **Repository:** https://github.com/nerdev1/Xenith  
 - **Issues:** Report bugs or request features on GitHub
 
 ---
