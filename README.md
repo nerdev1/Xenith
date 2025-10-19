@@ -10,19 +10,21 @@ Xenith is a modern cross platform mini-photoshop application built with **OpenGL
 - [Installation](#-installation)
 - [Building](#-building)
 - [Running](#-running)
+- [Links](#-links)
 ---
 
 ## Features
 
--  **Cross-platform** (Linux, Windows, macOS)
--  **Modern OpenGL** rendering
--  **Dear ImGui** for elegant user interfaces
--  **GLFW** for window and input management
--  **26+ Image filters** with C++23
--  Undo, Redo, Clear and Align options
--  **Keyboard shortcuts** for ease of use
--  **Simple Make build system**
--  **Clean and modular architecture**
+-  🖥️ **Cross-platform** (Linux, Windows, macOS)
+-  🎨 **26+ Image filters** with C++23
+-  ⚡ **Modern OpenGL** rendering
+-  🎯 **Dear ImGui** for elegant user interfaces
+-  🪟 **GLFW** for window and input management
+-  ↩️ **Undo/Redo** for full edit history support
+-  🧹 **Clear and Align** quick image manipulation tools
+-  ⌨️ **Keyboard shortcuts** for ease of use
+-  🔧 **Simple Make build system**
+-  📦 **Clean and modular architecture**
 
 ---
 
@@ -170,3 +172,11 @@ After a successful build:
 
 ---
 
+## Links
+
+- **Repository:** https://github.com/nerdev1/Xenith  
+- **Issues:** Report bugs or request features on GitHub
+
+---
+
+**Made with ❤️ using C++23, OpenGL, and Dear ImGui**
