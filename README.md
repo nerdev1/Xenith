@@ -1,4 +1,4 @@
-# 🌌 Xenith — Cross-Platform Application
+# 🌌 Xenith — Mini-Photoshop Application
 Xenith is a modern cross platform mini-photoshop application built with **OpenGL**, **GLFW**, and **Dear ImGui**, designed to run on **Linux**, **Windows**, and **macOS**.
 
 ---
