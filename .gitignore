@@ -1,5 +1,7 @@
 # Excutable and build files
 build/
+Xenith
+imgui.ini
 
 # Visual studio code
 .vscode/
